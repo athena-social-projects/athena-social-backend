@@ -19,7 +19,13 @@
   },
   "homepage": "https://github.com/M-Balghonaim/apollo-backend#readme",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.11",
     "morgan": "^1.9.1"
   },
   "devDependencies": {
