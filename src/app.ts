@@ -4,6 +4,7 @@ import {GraphQLServer} from "graphql-yoga";
 import {createConnection} from "typeorm";
 import * as session from "express-session";
 import * as ConnectRedis from "connect-redis";
+// import * as morgan from "morgan";
 
 import {redis} from "./redis";
 import {genSchema} from "./utils/generateSchema";
@@ -39,6 +40,8 @@ export const app = async () => {
             }
         })
     );
+
+    // server.express.use(morgan('dev'));
 
     const cors = {
         credentials: true,

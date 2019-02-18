@@ -7,5 +7,12 @@ export default async (
     context: Context,
     info: any
 ) => {
-    return resolver(parent, args, context, info);
+
+    // User isn't logged in
+    if (!context.session || !context.session.userId) {
+        return null;
+    }
+    const result = await resolver(parent, args, context, info);
+
+    return result;
 };
