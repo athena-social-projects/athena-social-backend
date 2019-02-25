@@ -1,0 +1,13 @@
+# import Authenticate from "../../shared.graphql"
+# import hasPermissions from "../../shared.graphql"
+
+
+type User {
+  id: ID! @hasPermissions(permissions: ["read:comment"])
+  email: String!
+}
+
+type Query {
+  me: User @Authenticate
+}
+

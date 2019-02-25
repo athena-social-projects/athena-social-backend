@@ -1,3 +1,7 @@
+directive @Authenticate on QUERY | FIELD_DEFINITION
+
+directive @hasPermissions(permissions: [String]) on QUERY | FIELD_DEFINITION | FIELD
+
 type Error {
     path: String!
     message: String!

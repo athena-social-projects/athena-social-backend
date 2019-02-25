@@ -1,4 +1,5 @@
 import {Redis} from "ioredis";
+import {Request} from "express";
 
 export interface Session {
     userId?: string;
@@ -6,10 +7,27 @@ export interface Session {
 
 export interface Context {
     redis: Redis;
-    url: string;
-    session: Session;
+    request: Request;
 }
 
+export const enum Gender {
+    MALE = 'male',
+    FEMALE = 'female',
+    OTHER = 'other'
+}
+
+export const enum userType {
+    USER = 'user',
+    ADMIN = 'admin'
+}
+
+export const general_permissions = [
+    "read:comment",
+    "write:comment",
+    "read:review",
+    "write:review",
+    "write:message"
+];
 export type Resolver = (
     parent: any,
     args: any,
@@ -27,6 +45,6 @@ export type GraphQLMiddlewareFunc = (
 
 export interface ResolverMap {
     [key: string]: {
-        [key: string]: (parent: any, args: any, context: { redis: Redis, url: string, session: Session }, info: any) => any;
+        [key: string]: (parent: any, args: any, context: Context, info: any) => any;
     };
 }

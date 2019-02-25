@@ -17,7 +17,7 @@ export const resolvers: ResolverMap = {
     },
     Mutation: {
 
-        login: async (_, {email, password}: any, {session}) => {
+        login: async (_, {email, password}: any, {request}) => {
             const user = await User.findOne({where: {email}});
 
             if (!user) {
@@ -41,11 +41,11 @@ export const resolvers: ResolverMap = {
             }
 
             // login sucessful
-            session.userId = user.id;
-
-            return {
-                message: "Login successful."
-            };
+            if (request.session) {
+                request.session.userId = user.id;
+                request.session.permissions = user.permissions;
+            }
+            return null;
         }
     }
 };

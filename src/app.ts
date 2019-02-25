@@ -4,7 +4,7 @@ import {GraphQLServer} from "graphql-yoga";
 import {createConnection} from "typeorm";
 import * as session from "express-session";
 import * as ConnectRedis from "connect-redis";
-// import * as morgan from "morgan";
+import * as morgan from "morgan";
 
 import {redis} from "./redis";
 import {genSchema} from "./utils/generateSchema";
@@ -19,8 +19,7 @@ export const app = async () => {
         schema: genSchema(),
         context: ({request}) => ({
             redis,
-            url: request.protocol + "://" + request.get("host"),
-            session: request.session
+            request: request
         } as Context)
     });
 
@@ -41,7 +40,7 @@ export const app = async () => {
         })
     );
 
-    // server.express.use(morgan('dev'));
+    server.express.use(morgan('dev'));
 
     const cors = {
         credentials: true,
@@ -51,7 +50,7 @@ export const app = async () => {
     server.express.get("/confirm/:id", confirmEmail);
 
     await createConnection();
-    const gql = await server.start({
+    const app = await server.start({
         cors,
         port: process.env.NODE_ENV === "test" ? 0 : 4000
     });
@@ -60,5 +59,5 @@ export const app = async () => {
         console.log(err);
     });
 
-    return gql;
+    return app;
 };
