@@ -1,12 +1,12 @@
-import { Request } from "express-serve-static-core";
-import { Response } from "express";
+import { Request } from 'express-serve-static-core';
+import { Response } from 'express';
 
-const { Router } = require('express');
+import { Router } from 'express';
 
-const router = Router();
+const router: Router = Router();
 
-router.get('/ping', (req: Request, res: Response) => {
+router.get('/', (req: Request, res: Response) => {
   res.send('pong');
 });
 
-module.exports = router;
+export const pingController: Router = router;

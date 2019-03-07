@@ -1,13 +1,13 @@
-const express = require('express');
-const morgan = require('morgan');
+import express = require('express');
+import morgan = require('morgan');
 
-const ping = require('./controllers/ping');
+import { pingController } from './controllers/ping';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 const initRoutes = () => {
-  app.use(ping);
+  app.use('/ping', pingController);
 };
 
 const initMiddleware = () => {
