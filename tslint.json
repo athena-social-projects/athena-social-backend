@@ -16,6 +16,9 @@
           "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
       }
   },
+  "exclude": [
+    "./src/schema.graphql"
+  ],
   "jsRules": {
       "max-line-length": {
           "options": [120]
