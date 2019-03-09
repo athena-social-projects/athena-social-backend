@@ -1,6 +1,13 @@
 type Query {
-    ping: String
-  }
+  ping: String
+  media(search: String): [Media]
+}
+
+type Media {
+  id: Int
+  name: String
+  type: String
+}
 
 schema {
   query: Query

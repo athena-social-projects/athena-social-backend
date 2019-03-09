@@ -1,10 +1,13 @@
 import { App } from './app';
 import { importSchema } from 'graphql-import';
-import ping from './resolvers/ping';
 import * as path from 'path';
+
+import media from './resolvers/media';
+import ping from './resolvers/ping';
 
 const resolvers = {
   Query: {
+    media,
     ping,
   },
 };

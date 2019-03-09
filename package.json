@@ -27,6 +27,7 @@
     "@types/graphql": "^14.0.7",
     "@types/morgan": "^1.7.35",
     "@types/node": "^11.10.5",
+    "@types/request-promise-native": "^1.0.15",
     "apollo-server-express": "^2.4.8",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
@@ -34,8 +35,11 @@
     "graphql-import": "^0.7.1",
     "graphql-tools": "^4.0.4",
     "morgan": "^1.9.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
     "tslint": "^5.13.1",
-    "typescript": "^3.3.3333"
+    "typescript": "^3.3.3333",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",

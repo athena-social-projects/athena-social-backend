@@ -5,8 +5,10 @@
           "options": [120]
       },
       "quotemark": [true, "single"],
+      "object-literal-sort-keys": false,
       "new-parens": true,
       "no-arg": true,
+      "member-access": false,
       "no-bitwise": true,
       "no-conditional-assignment": true,
       "no-consecutive-blank-lines": false,
