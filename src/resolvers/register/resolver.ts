@@ -1,13 +1,13 @@
-import {generalPermissions} from '../types/custom-types';
-import {User} from '../entity/User';
+import {generalPermissions} from '../../types/custom-types';
+import {User} from '../../entity/User';
 import * as yup from 'yup'; // for object schema validation
-import {formatYupError} from '../utils/formatYupError';
+import {formatYupError} from '../../utils/formatYupError';
 import {
     duplicateEmail,
     emailNotLongEnough,
     invalidEmail,
     passwordNotLongEnough,
-} from '../utils/errorMessages';
+} from '../../utils/errorMessages';
 
 const validateSchema = async (args: any): Promise<any> => {
     try {

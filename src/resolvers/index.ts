@@ -1,7 +1,7 @@
-import ping from './ping';
-import me from './me';
-import register from './register';
-import login from './login';
+import ping from './ping/resolver';
+import me from './me/resolver';
+import register from './register/resolver';
+import login from './login/resolver';
 
 
 export const resolvers = {

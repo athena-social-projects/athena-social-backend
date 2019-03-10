@@ -1,4 +1,4 @@
-import {UnauthorizedError} from '../utils/errors';
+import {UnauthorizedError} from '../../utils/errors';
 import {SchemaDirectiveVisitor} from 'apollo-server-express';
 import {defaultFieldResolver} from 'graphql';
 

@@ -1,4 +1,4 @@
-import verifyLoggedIn from '../utils/verifyLoggedIn';
+import verifyLoggedIn from '../../utils/verifyLoggedIn';
 import {SchemaDirectiveVisitor} from 'apollo-server-express';
 import {defaultFieldResolver} from 'graphql';
 

@@ -1,7 +1,7 @@
 import * as bcrypt from 'bcryptjs';
-import {User} from '../entity/User';
-import {confirmEmailError} from '../utils/errorMessages';
-import {InvalidLogin} from '../utils/errors';
+import {User} from '../../entity/User';
+import {confirmEmailError} from '../../utils/errorMessages';
+import {InvalidLogin} from '../../utils/errors';
 
 
 export default async (_: any, {email, password}: any, context: any) => {

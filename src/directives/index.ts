@@ -1,5 +1,5 @@
-import {AuthenticateDirective} from './AuthenticateDirective';
-import {HasPermissionsDirective} from './HasPermissionsDirective';
+import {AuthenticateDirective} from './auth/AuthenticateDirective';
+import {HasPermissionsDirective} from './auth/HasPermissionsDirective';
 
 export const schemaDirectives = {
     Authenticate: AuthenticateDirective,
