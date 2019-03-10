@@ -1,10 +1,10 @@
 export default interface IMovie {
-  vote_count: Int16Array;
-  id: Int16Array;
+  vote_count: number;
+  id: number;
   video: boolean;
-  vote_average: Int16Array;
+  vote_average: number;
   title: string;
-  popularity: Int16Array;
+  popularity: number;
   poster_path: string;
   original_language: string;
   original_title: string;

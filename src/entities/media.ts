@@ -1,5 +1,5 @@
 export default interface IMedia {
-  id: Int16Array;
+  id: string;
   name: string;
   type: string;
 }

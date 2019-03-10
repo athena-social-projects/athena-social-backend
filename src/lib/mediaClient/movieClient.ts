@@ -4,7 +4,7 @@ import IMovie from '../../entities/movie';
 import IMedia from '../../entities/media';
 import Client from './client';
 
-export default class MovieClient extends Client{
+export default class MovieClient extends Client {
   private apiKey: string;
 
   constructor(uri: string, searchPath: string, apiKey: string) {
@@ -33,7 +33,7 @@ export default class MovieClient extends Client{
     const newData: IMedia[] = [];
     shortData.forEach((movie: IMovie) => {
       newData.push({
-        id: movie.id,
+        id: movie.id.toString(),
         name: movie.title,
         type: this.type,
       });
