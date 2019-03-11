@@ -1,13 +1,8 @@
-import { App } from './app';
-import { importSchema } from 'graphql-import';
-import ping from './resolvers/ping';
+import {App} from './app';
+import {importSchema} from 'graphql-import';
 import * as path from 'path';
+import {resolvers} from './resolvers';
 
-const resolvers = {
-  Query: {
-    ping,
-  },
-};
 
 const typeDefs = importSchema(path.join(__dirname, '../schema.graphql'));
 

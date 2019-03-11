@@ -1,7 +1,27 @@
+directive @Authenticate on QUERY | FIELD_DEFINITION
+
+directive @hasPermissions(permissions: [String]) on QUERY | FIELD_DEFINITION | FIELD
+
+type Error {
+    path: String!
+    message: String!
+}
+
+type User {
+    id: ID!
+    email: String!
+    permissions: [String!]
+}
+
 type Query {
     ping: String
-  }
+}
 
-schema {
-  query: Query
+type Mutation {
+    register(email: String!, password: String!): [Error!],
+    login(email: String!, password: String!): User
+}
+
+type Query {
+    me: User @Authenticate @hasPermissions(permissions: ["read:permissions"])
 }
