@@ -1,4 +1,4 @@
-import IMedia from '../entities/media';
+import { IMedia } from '../types/custom-types';
 import leven from 'leven';
 
 interface ISortingMedia {

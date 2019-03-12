@@ -13,6 +13,9 @@
       "no-conditional-assignment": true,
       "no-consecutive-blank-lines": false,
       "ordered-imports": false,
+      "one-variable-per-declaration": false,
+      "max-classes-per-file": false,
+    "object-literal-sort-keys": false,
       "no-console": {
           "severity": "warning",
           "options": ["debug", "info", "log", "time", "timeEnd", "trace"]

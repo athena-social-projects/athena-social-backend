@@ -1,7 +1,6 @@
 import request from 'request-promise-native';
 
-import IMovie from '../../entities/movie';
-import IMedia from '../../entities/media';
+import { IMedia, IMovie } from '../../types/custom-types';
 import Client from './client';
 
 export default class MovieClient extends Client {

@@ -1,11 +1,11 @@
-import config from '../config/base';
+import config from '../../config/base';
 
-import MovieClient from '../lib/mediaClient/movieClient';
-import MusicClient from '../lib/mediaClient/musicClient';
-import Client from '../lib/mediaClient/client';
-import sortSearch from '../lib/sortSearch';
+import MovieClient from '../../utils/mediaClient/movieClient';
+import MusicClient from '../../utils/mediaClient/musicClient';
+import Client from '../../utils/mediaClient/client';
+import sortSearch from '../../utils/sortSearch';
 
-import IMedia from '../entities/media';
+import { IMedia } from '../../types/custom-types';
 
 export default function media(obj: any, args: any) {
   const { search } = args;
