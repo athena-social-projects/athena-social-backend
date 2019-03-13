@@ -1,4 +1,4 @@
-import {generalPermissions} from '../../types/custom-types';
+import {generalPermissions} from '../../types/customTypes';
 import {User} from '../../entity/User';
 import * as yup from 'yup'; // for object schema validation
 import {formatYupError} from '../../utils/formatYupError';

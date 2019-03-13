@@ -2,7 +2,7 @@
 
 #### To run:
 * `npm install`
-* Make sure you have the Redis and Postgres services running locally
+*  In a seperate window run `docker-compose up`
 * `npm run start`
 * Go to: `localhost:3000`
 

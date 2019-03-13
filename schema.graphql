@@ -13,8 +13,10 @@ type User {
     permissions: [String!]
 }
 
-type Query {
-    ping: String
+type Media {
+  id: String
+  name: String
+  type: String
 }
 
 type Mutation {
@@ -23,5 +25,7 @@ type Mutation {
 }
 
 type Query {
+    ping: String
+    media(search: String): [Media]
     me: User @Authenticate @hasPermissions(permissions: ["read:permissions"])
 }

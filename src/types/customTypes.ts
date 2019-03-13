@@ -3,38 +3,38 @@ import {Request} from 'apollo-server-express';
 import {Session} from 'inspector';
 
 export interface ISession extends Session {
-    userId?: string;
+  userId?: string;
 }
 
 export interface IApolloSession extends ISession {
-    permissions: string[];
-    userId: string;
+  permissions: string[];
+  userId: string;
 }
 
 export interface IApolloRequest extends Request {
-    session: IApolloSession;
+  session: IApolloSession;
 }
 export const enum Gender {
-    MALE = 'male',
-    FEMALE = 'female',
-    OTHER = 'other',
+  MALE = 'male',
+  FEMALE = 'female',
+  OTHER = 'other',
 }
 
 export const enum userType {
-    USER = 'user',
-    ADMIN = 'admin',
+  USER = 'user',
+  ADMIN = 'admin',
 }
 
 export const generalPermissions = [
-    'read:comment',
-    'write:comment',
-    'read:review',
-    'read:permissions',
-    'write:review',
-    'write:message',
+  'read:comment',
+  'write:comment',
+  'read:review',
+  'read:permissions',
+  'write:review',
+  'write:message',
 ];
 
 export interface IApolloContext {
-    redis: Redis;
-    req: IApolloRequest;
+  redis: Redis;
+  req: IApolloRequest;
 }
