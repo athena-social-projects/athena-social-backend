@@ -10,5 +10,5 @@ export default {
     apiKey: 'Basic MWQ1MGFkNGVjZDE3NDE3OWFiMGU1NDcxZGIzZjljOTk6ZTU5MDQ1ZGMzMDFjNDI1MWE0ODQxOTI4YzIzNjAzZDI=',
     authUrl: 'https://accounts.spotify.com',
     authPath: '/api/token',
-  }
+  },
 };

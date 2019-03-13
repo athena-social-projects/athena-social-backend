@@ -10,7 +10,7 @@
     "watch-node": "nodemon dist/app.js",
     "watch-ts": "tsc -w",
     "test": "mocha ./test/*",
-    "lint": "tslint ./src/*"
+    "lint": "tslint ./src/**/*.ts"
   },
   "repository": {
     "type": "git",

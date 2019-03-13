@@ -6,14 +6,14 @@ import media from './media/resolver';
 
 
 export const resolvers = {
-    Query: {
-        ping,
-        me,
-        media,
-    },
-    Mutation: {
-        register,
-        login,
-    },
+  Query: {
+    ping,
+    me,
+    media,
+  },
+  Mutation: {
+    register,
+    login,
+  },
 };
 

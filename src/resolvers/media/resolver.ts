@@ -5,7 +5,7 @@ import MusicClient from '../../utils/mediaClient/musicClient';
 import Client from '../../utils/mediaClient/client';
 import sortSearch from '../../utils/sortSearch';
 
-import { IMedia } from '../../types/custom-types';
+import { IMedia } from '../../types/mediaTypes';
 
 export default function media(obj: any, args: any) {
   const { search } = args;

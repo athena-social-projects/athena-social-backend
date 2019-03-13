@@ -1,4 +1,4 @@
-import {ISession} from '../types/custom-types';
+import {ISession} from '../types/customTypes';
 import {UnauthorizedError} from './errors';
 
 export default (session: ISession) => {

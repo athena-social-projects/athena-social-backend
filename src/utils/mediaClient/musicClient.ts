@@ -1,7 +1,7 @@
 import request from 'request-promise-native';
 
 import config from '../../config/base';
-import { IMedia, IAlbum } from '../../types/custom-types';
+import { IMedia, IAlbum } from '../../types/mediaTypes';
 import Client from './client';
 
 export default class MusicClient extends Client {

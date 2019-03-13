@@ -1,4 +1,4 @@
-import { IMedia } from '../types/custom-types';
+import { IMedia } from '../types/mediaTypes';
 import leven from 'leven';
 
 interface ISortingMedia {
@@ -12,7 +12,7 @@ const revertData = (excessMedia: ISortingMedia[]): IMedia[] => {
     revertedMedia.push(sortingData.media);
   });
   return revertedMedia;
-}
+};
 
 export default function sortSearch(media: IMedia[], search: string): IMedia[] {
   const simalarMedia: ISortingMedia[] = [];

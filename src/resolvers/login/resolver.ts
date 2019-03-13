@@ -27,11 +27,11 @@ export default async (_: any, {email, password}: any, context: any) => {
         ];
     }
 
-    // login successful
-    const session = context.req.session;
-    if (session) {
-        session.userId = user.id;
-        session.permissions = user.permissions;
-    }
-    return user;
+  // login successful
+  const session = context.req.session;
+  if (session) {
+    session.userId = user.id;
+    session.permissions = user.permissions;
+  }
+  return user;
 };
