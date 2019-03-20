@@ -6,8 +6,7 @@ import {redis} from './redis';
 import session from 'express-session';
 import ConnectRedis from 'connect-redis';
 import {schemaDirectives} from './directives';
-
-
+import logger from './utils/logger';
 const RedisStore = ConnectRedis(session);
 
 export class App {
@@ -25,7 +24,7 @@ export class App {
     // Create Postgres connection to our database
     await createConnection();
     this.app.listen(this.port);
-    console.log(`Server listening on: http://localhost:${this.port}${this.server.graphqlPath}`);
+    logger.info(`Server listening on: http://localhost:${this.port}${this.server.graphqlPath}`);
   }
 
   private initRoutes(): void {

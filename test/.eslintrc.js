@@ -1,5 +1,9 @@
 module.exports = {
-  "extends": "../.eslintrc.js",
+  "extends": "airbnb",
+  "rules": {
+    "func-names": ["error", "never"],
+    "quotes": [2, "single", "avoid-escape"]
+  },
   "env": {
     "mocha": true
   }

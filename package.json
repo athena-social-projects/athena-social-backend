@@ -9,7 +9,7 @@
     "server": "node dist/",
     "watch-node": "nodemon dist/app.js",
     "watch-ts": "tsc -w",
-    "test": "mocha ./test/*",
+    "test": "istanbul cover mocha ./test/*",
     "lint": "tslint ./src/**/*.ts"
   },
   "repository": {
@@ -40,16 +40,18 @@
     "graphql": "^14.1.1",
     "graphql-import": "^0.7.1",
     "graphql-tools": "^4.0.4",
+    "ioredis": "^4.6.2",
+    "istanbul": "^0.4.5",
     "leven": "^2.1.0",
     "morgan": "^1.9.1",
+    "pg": "^7.8.2",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
-    "typescript": "^3.3.3333",
-    "ioredis": "^4.6.2",
-    "pg": "^7.8.2",
     "tslint": "^5.13.1",
     "typeorm": "^0.2.14",
+    "typescript": "^3.3.3333",
     "uuid": "^3.3.2",
+    "winston": "^3.2.1",
     "yup": "^0.26.10"
   },
   "devDependencies": {
