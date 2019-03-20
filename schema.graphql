@@ -22,6 +22,7 @@ type Media {
 type Mutation {
     register(email: String!, password: String!): [Error!],
     login(email: String!, password: String!): User
+    logout: [Error!] @Authenticate
 }
 
 type Query {
