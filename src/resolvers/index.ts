@@ -2,6 +2,7 @@ import ping from './ping/resolver';
 import me from './me/resolver';
 import register from './register/resolver';
 import login from './login/resolver';
+import logout from './logout/resolver';
 import media from './media/resolver';
 
 
@@ -14,6 +15,7 @@ export const resolvers = {
   Mutation: {
     register,
     login,
+    logout,
   },
 };
 
