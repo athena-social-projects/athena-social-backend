@@ -7,6 +7,7 @@ import session from 'express-session';
 import ConnectRedis from 'connect-redis';
 import {schemaDirectives} from './directives';
 
+import MediaClientManager from './utils/mediaClientManager';
 
 const RedisStore = ConnectRedis(session);
 
@@ -59,6 +60,7 @@ export class App {
       context: ({req}) => ({
         redis,
         req,
+        mediaClientManager: new MediaClientManager(),
       } as any),
     });
     this.server.applyMiddleware({app: this.app});

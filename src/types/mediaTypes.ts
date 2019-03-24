@@ -1,3 +1,16 @@
+export interface IMediaSummary {
+  id: string;
+  name: string;
+  type: string;
+}
+
+export interface IMediaDetail {
+  id: string;
+  name: string;
+  type: string;
+  release_date: string;
+}
+
 export interface IMovie {
   vote_count: number;
   id: number;
@@ -12,12 +25,6 @@ export interface IMovie {
   adult: boolean;
   overview: string;
   release_date: string;
-}
-
-export interface IMedia {
-  id: string;
-  name: string;
-  type: string;
 }
 
 export interface IAlbum {

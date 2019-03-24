@@ -1,8 +1,9 @@
 import request from 'request-promise-native';
 
 import config from '../../config/base';
-import { IMedia, IAlbum } from '../../types/mediaTypes';
+import { IMediaSummary, IAlbum, IMediaDetail } from '../../types/mediaTypes';
 import Client from './client';
+import mediaType from '../mediaType';
 
 export default class MusicClient extends Client {
   private apiKey: string;
@@ -13,9 +14,25 @@ export default class MusicClient extends Client {
     this.apiKey = apiKey;
   }
 
-  // public getById(): any;
+  public getById(id: string): any {
+    console.log(`${this.uri}${config.musicConfig.idSearchPath}/${id}`);
+    return this.authenticate()
+      .then((accessToken) =>
+        request.get({
+          url: `${this.uri}${config.musicConfig.idSearchPath}/${id}`,
+          qs: {
+            api_key: this.apiKey,
+          },
+          headers: {
+            Authorization: accessToken,
+          },
+          json: true,
+        }))
+        .then((res) => this.populateMediaDetail(res))
+        .catch((err) => { throw err; });
+  }
 
-  public searchByString(search: string): Promise<void | IMedia[]> {
+  public searchByString(search: string): Promise<void | IMediaSummary[]> {
     return this.authenticate()
       .then((accessToken) =>
         request.get({
@@ -33,14 +50,23 @@ export default class MusicClient extends Client {
         .catch((err) => { console.log(err); });
   }
 
-  private truncateData(results: IAlbum[]): IMedia[] {
+  public populateMediaDetail(album: IAlbum): IMediaDetail {
+    return {
+      id: album.id,
+      name: album.name,
+      type: mediaType.Album,
+      release_date: album.release_date,
+    };
+  }
+
+  private truncateData(results: IAlbum[]): IMediaSummary[] {
     const shortData = results.splice(0, 10);
-    const newData: IMedia[] = [];
+    const newData: IMediaSummary[] = [];
     shortData.forEach((album: IAlbum) => {
       newData.push({
         id: album.id,
         name: album.name,
-        type: 'Album',
+        type: mediaType.Album,
       });
     });
     return newData;
