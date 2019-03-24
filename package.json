@@ -9,7 +9,7 @@
     "server": "node dist/",
     "watch-node": "nodemon dist/app.js",
     "watch-ts": "tsc -w",
-    "test": "istanbul cover mocha ./test/*",
+    "test": "istanbul cover mocha --require ts-node/register",
     "lint": "tslint ./src/**/*.ts"
   },
   "repository": {
@@ -55,8 +55,10 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/chai": "^4.1.7",
     "@types/connect-redis": "0.0.9",
     "@types/ioredis": "^4.0.9",
+    "@types/mocha": "^5.2.6",
     "@types/uuid": "^3.4.4",
     "@types/yup": "^0.26.12",
     "chai": "^4.2.0",
@@ -66,6 +68,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
     "mocha": "^5.2.0",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "ts-node": "^8.0.3"
   }
 }
