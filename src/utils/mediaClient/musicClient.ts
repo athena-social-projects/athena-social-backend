@@ -3,6 +3,7 @@ import request from 'request-promise-native';
 import config from '../../config/base';
 import { IMedia, IAlbum } from '../../types/mediaTypes';
 import Client from './client';
+import logger from '../logger';
 
 export default class MusicClient extends Client {
   private apiKey: string;
@@ -30,7 +31,7 @@ export default class MusicClient extends Client {
           json: true,
         }))
         .then((res) => this.truncateData(res.albums.items))
-        .catch((err) => { console.log(err); });
+        .catch((err) => { logger.error('Error getting music:', err); });
   }
 
   private truncateData(results: IAlbum[]): IMedia[] {

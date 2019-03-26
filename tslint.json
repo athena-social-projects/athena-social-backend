@@ -14,13 +14,17 @@
       "no-consecutive-blank-lines": false,
       "ordered-imports": false,
       "one-variable-per-declaration": false,
-      "indent": [true, "spaces", 2],
+      "indent": [true, "spaces"],
+      "ter-indent": [true, 2],
       "max-classes-per-file": false,
       "no-console": {
           "severity": "warning",
           "options": ["debug", "info", "log", "time", "timeEnd", "trace"]
       }
   },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ],
   "exclude": [
     "./src/schema.graphql"
   ],
