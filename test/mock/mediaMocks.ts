@@ -43,3 +43,36 @@ export const movieStringReply = {
     overview: 'Test1.',
     release_date: '1991-07-11' }
   ]};
+
+export const musicStringReply = {
+  albums: {
+    items: [
+      { 
+        album_type: 'album',
+        available_markets: ['AD'],
+        external_urls: 
+        { spotify: 'https://open.spotify.com/album/2rU7u7C2v5i45MFVxx7xG1' },
+        href: 'https://api.spotify.com/v1/albums/2rU7u7C2v5i45MFVxx7xG1',
+        id: '2rU7u7C2v5i45MFVxx7xG1',
+        name: 'Taylor Swift (Big Machine Radio Release Special)',
+        release_date: '2006-10-23',
+        release_date_precision: 'day',
+        total_tracks: 30,
+        type: 'album',
+        uri: 'spotify:album:2rU7u7C2v5i45MFVxx7xG1' },
+        { album_type: 'single',
+        available_markets: [ 'AD' ],
+        external_urls: 
+        { spotify: 'https://open.spotify.com/album/2Vd3aVbpKUyRq42B7xd2HW' },
+        href: 'https://api.spotify.com/v1/albums/2Vd3aVbpKUyRq42B7xd2HW',
+        id: '2Vd3aVbpKUyRq42B7xd2HW',
+        name: 'Omen (Radio Edit)',
+        release_date: '2015-07-27',
+        release_date_precision: 'day',
+        total_tracks: 1,
+        type: 'album',
+        uri: 'spotify:album:2Vd3aVbpKUyRq42B7xd2HW'
+      }
+    ]
+  }
+};
