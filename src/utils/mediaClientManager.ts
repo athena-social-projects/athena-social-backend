@@ -1,4 +1,4 @@
-import config from '../config/base';
+import config from '../config/mediaApi';
 
 import Client from './mediaClient/client';
 import MovieClient from './mediaClient/movieClient';

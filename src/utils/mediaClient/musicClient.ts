@@ -1,7 +1,8 @@
 import request from 'request-promise-native';
 
-import config from '../../config/base';
-import { IMediaSummary, IAlbum, IMediaDetail } from '../../types/mediaTypes';
+import config from '../../config/mediaApi';
+import { IMediaSummary, IMediaDetail } from '../../types/mediaTypes';
+import IAlbum from '../../types/album';
 import Client from './client';
 import mediaType from '../mediaType';
 
@@ -15,7 +16,6 @@ export default class MusicClient extends Client {
   }
 
   public getById(id: string): any {
-    console.log(`${this.uri}${config.musicConfig.idSearchPath}/${id}`);
     return this.authenticate()
       .then((accessToken) =>
         request.get({
@@ -56,6 +56,7 @@ export default class MusicClient extends Client {
       name: album.name,
       type: mediaType.Album,
       release_date: album.release_date,
+      image_url: album.images[0] ? album.images[0].url : null,
     };
   }
 
@@ -67,6 +68,7 @@ export default class MusicClient extends Client {
         id: album.id,
         name: album.name,
         type: mediaType.Album,
+        release_date: album.release_date,
       });
     });
     return newData;

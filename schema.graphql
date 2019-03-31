@@ -14,9 +14,10 @@ type User {
 }
 
 type MediaSummary {
-  id: String
-  name: String
-  type: String
+    id: String
+    name: String
+    type: String
+    release_date: String
 }
 
 type MediaDetail {
@@ -24,6 +25,7 @@ type MediaDetail {
     name: String
     type: String
     release_date: String
+    image_url: String
 }
 
 type Mutation {

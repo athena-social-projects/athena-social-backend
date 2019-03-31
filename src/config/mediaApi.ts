@@ -4,6 +4,7 @@ export default {
     searchPath: '/search/movie',
     idSearchPath: '/movie',
     apiKey: '8369b11af4effd966a2d521c0b0d4b97',
+    baseImageUrl: 'http://image.tmdb.org/t/p/original',
   },
   musicConfig: {
     rootUrl: 'https://api.spotify.com',

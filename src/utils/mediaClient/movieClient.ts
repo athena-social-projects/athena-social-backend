@@ -1,10 +1,10 @@
 import request from 'request-promise-native';
 
-import config from '../../config/base';
+import config from '../../config/mediaApi';
 
-import { IMediaSummary, IMovie } from '../../types/mediaTypes';
+import { IMediaSummary, IMediaDetail } from '../../types/mediaTypes';
+import IMovie from '../../types/movie';
 import Client from './client';
-import { resolve } from 'url';
 
 export default class MovieClient extends Client {
   private apiKey: string;
@@ -49,17 +49,19 @@ export default class MovieClient extends Client {
         id: movie.id.toString(),
         name: movie.title,
         type: this.type,
+        release_date: movie.release_date,
       });
     });
     return newData;
   }
 
-  private populateMediaDetail(movie: IMovie) {
+  private populateMediaDetail(movie: IMovie): IMediaDetail {
     return {
       id: movie.id.toString(),
       name: movie.title,
       type: this.type,
       release_date: movie.release_date,
+      image_url: movie.poster_path ? config.movieConfig.baseImageUrl + movie.poster_path : null,
     };
   }
 }
