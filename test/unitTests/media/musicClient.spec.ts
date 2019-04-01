@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import nock from 'nock';
 
-import config from '../../src/config/base';
-import MusicClient from '../../src/utils/mediaClient/musicClient';
+import config from '../../../src/config/base';
+import MusicClient from '../../../src/utils/mediaClient/musicClient';
 import { musicStringReply } from '../mock/mediaMocks';
-import { IMedia } from '../../src/types/mediaTypes';
+import { IMedia } from '../../../src/types/mediaTypes';
 
 describe('MovieClient Tests', () => {
   it('Can create without thowing error', () => {
