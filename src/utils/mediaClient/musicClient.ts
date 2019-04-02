@@ -4,7 +4,7 @@ import config from '../../config/mediaApi';
 import { IMediaSummary, IMediaDetail } from '../../types/mediaTypes';
 import IAlbum from '../../types/album';
 import Client from './client';
-import mediaType from '../mediaType';
+import mediaType from '../../config/mediaSource';
 
 export default class MusicClient extends Client {
   private apiKey: string;
@@ -55,8 +55,8 @@ export default class MusicClient extends Client {
       id: album.id,
       name: album.name,
       type: mediaType.Album,
-      release_date: album.release_date,
-      image_url: album.images[0] ? album.images[0].url : null,
+      releaseDate: album.release_date,
+      imageUrl: album.images[0] ? album.images[0].url : null,
     };
   }
 
@@ -68,7 +68,7 @@ export default class MusicClient extends Client {
         id: album.id,
         name: album.name,
         type: mediaType.Album,
-        release_date: album.release_date,
+        releaseDate: album.release_date,
       });
     });
     return newData;

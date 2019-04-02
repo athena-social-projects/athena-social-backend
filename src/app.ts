@@ -7,7 +7,7 @@ import session from 'express-session';
 import ConnectRedis from 'connect-redis';
 import {schemaDirectives} from './directives';
 
-import MediaClientManager from './utils/mediaClientManager';
+import MediaClientManager from './utils/mediaClient/mediaClientManager';
 
 const RedisStore = ConnectRedis(session);
 

@@ -1,9 +1,9 @@
-import config from '../config/mediaApi';
+import config from '../../config/mediaApi';
 
-import Client from './mediaClient/client';
-import MovieClient from './mediaClient/movieClient';
-import MusicClient from './mediaClient/musicClient';
-import mediaSource from './mediaType';
+import Client from './client';
+import MovieClient from './movieClient';
+import MusicClient from './musicClient';
+import MediaSource from '../../config/mediaSource';
 
 export default class MediaClientManager {
     public readonly clients: Client[];
@@ -24,11 +24,11 @@ export default class MediaClientManager {
         ];
     }
 
-    public getClient(mediaType: string): Client {
-        switch (mediaType) {
-            case mediaSource.Movie:
+    public getClient(mediaSource: string): Client {
+        switch (mediaSource) {
+            case MediaSource.Movie:
                 return this.movieClient;
-            case mediaSource.Album:
+            case MediaSource.Album:
                 return this.musicClient;
         }
     }

@@ -49,7 +49,7 @@ export default class MovieClient extends Client {
         id: movie.id.toString(),
         name: movie.title,
         type: this.type,
-        release_date: movie.release_date,
+        releaseDate: movie.release_date,
       });
     });
     return newData;
@@ -60,8 +60,8 @@ export default class MovieClient extends Client {
       id: movie.id.toString(),
       name: movie.title,
       type: this.type,
-      release_date: movie.release_date,
-      image_url: movie.poster_path ? config.movieConfig.baseImageUrl + movie.poster_path : null,
+      releaseDate: movie.release_date,
+      imageUrl: movie.poster_path ? config.movieConfig.baseImageUrl + movie.poster_path : null,
     };
   }
 }

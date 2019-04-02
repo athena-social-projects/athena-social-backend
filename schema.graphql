@@ -17,15 +17,15 @@ type MediaSummary {
     id: String
     name: String
     type: String
-    release_date: String
+    releaseDate: String
 }
 
 type MediaDetail {
     id: String
     name: String
     type: String
-    release_date: String
-    image_url: String
+    releaseDate: String
+    imageUrl: String
 }
 
 type Mutation {
