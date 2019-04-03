@@ -13,10 +13,19 @@ type User {
     permissions: [String!]
 }
 
-type Media {
-  id: String
-  name: String
-  type: String
+type MediaSummary {
+    id: String
+    name: String
+    type: String
+    releaseDate: String
+}
+
+type MediaDetail {
+    id: String
+    name: String
+    type: String
+    releaseDate: String
+    imageUrl: String
 }
 
 type Mutation {
@@ -27,6 +36,8 @@ type Mutation {
 
 type Query {
     ping: String
-    media(search: String): [Media]
+    mediaSearch(search: String): [MediaSummary]
+    mediaId(id: String, mediaType: String): MediaDetail
+
     me: User @Authenticate @hasPermissions(permissions: ["read:permissions"])
 }

@@ -1,6 +1,9 @@
 import request from 'request-promise-native';
 
-import { IMedia, IMovie } from '../../types/mediaTypes';
+import config from '../../config/mediaApi';
+
+import { IMediaSummary, IMediaDetail } from '../../types/mediaTypes';
+import IMovie from '../../types/movie';
 import Client from './client';
 
 export default class MovieClient extends Client {
@@ -12,9 +15,20 @@ export default class MovieClient extends Client {
     this.type = 'Movie';
   }
 
-  // public getById(): any;
+  public getById(id: string): any {
 
-  public searchByString(search: string): Promise<void | IMedia[]> {
+    return request.get({
+      url: `${this.uri}${config.movieConfig.idSearchPath}/${id}`,
+      qs: {
+        api_key: this.apiKey,
+      },
+      json: true,
+    })
+      .then((res) => this.populateMediaDetail(res))
+      .catch((err) => { throw err; });
+  }
+
+  public searchByString(search: string): Promise<void | IMediaSummary[]> {
     return request.get({
       url: `${this.uri}${this.searchPath}`,
       qs: {
@@ -29,14 +43,25 @@ export default class MovieClient extends Client {
 
   private truncateData(results: IMovie[]) {
     const shortData = results.splice(0, 10);
-    const newData: IMedia[] = [];
+    const newData: IMediaSummary[] = [];
     shortData.forEach((movie: IMovie) => {
       newData.push({
         id: movie.id.toString(),
         name: movie.title,
         type: this.type,
+        releaseDate: movie.release_date,
       });
     });
     return newData;
+  }
+
+  private populateMediaDetail(movie: IMovie): IMediaDetail {
+    return {
+      id: movie.id.toString(),
+      name: movie.title,
+      type: this.type,
+      releaseDate: movie.release_date,
+      imageUrl: movie.poster_path ? config.movieConfig.baseImageUrl + movie.poster_path : null,
+    };
   }
 }

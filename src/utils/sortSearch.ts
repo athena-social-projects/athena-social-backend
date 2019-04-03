@@ -1,20 +1,20 @@
-import { IMedia } from '../types/mediaTypes';
+import { IMediaSummary } from '../types/mediaTypes';
 import leven from 'leven';
 
 interface ISortingMedia {
   similarity: number;
-  media: IMedia;
+  media: IMediaSummary;
 }
 
-const revertData = (excessMedia: ISortingMedia[]): IMedia[] => {
-  const revertedMedia: IMedia[] = [];
+const revertData = (excessMedia: ISortingMedia[]): IMediaSummary[] => {
+  const revertedMedia: IMediaSummary[] = [];
   excessMedia.forEach((sortingData) => {
     revertedMedia.push(sortingData.media);
   });
   return revertedMedia;
 };
 
-export default function sortSearch(media: IMedia[], search: string): IMedia[] {
+export default function sortSearch(media: IMediaSummary[], search: string): IMediaSummary[] {
   const simalarMedia: ISortingMedia[] = [];
   media.forEach((entity) => {
     const sortedEntity: ISortingMedia = {
