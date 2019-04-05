@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import nock from 'nock';
 
-import config from '../../../src/config/base';
+import config from '../../../src/config/mediaApi';
 import MusicClient from '../../../src/utils/mediaClient/musicClient';
 import { musicStringReply } from '../mock/mediaMocks';
-import { IMedia } from '../../../src/types/mediaTypes';
+import { IMediaSummary } from '../../../src/types/mediaTypes';
 
 describe('MovieClient Tests', () => {
   it('Can create without thowing error', () => {
@@ -24,7 +24,7 @@ describe('MovieClient Tests', () => {
       config.musicConfig.searchPath,
       config.musicConfig.apiKey);
     return musicClient.searchByString('test1')
-      .then((result: IMedia[]) => {
+      .then((result: IMediaSummary[]) => {
         result.forEach(media => {
           expect(media.id).to.be.exist;
           expect(media.name).to.be.exist;

@@ -10,7 +10,8 @@
     "watch-node": "nodemon dist/app.js",
     "watch-ts": "tsc -w",
     "test": "nyc mocha -r ts-node/register test/**/*.spec.ts",
-    "lint": "tslint src/*/**/*.ts --fix"
+    "lint": "tslint ./src/**/*.ts",
+    "lintFix": "node node_modules/.bin/tslint --fix ./src/**/*.ts"
   },
   "repository": {
     "type": "git",
