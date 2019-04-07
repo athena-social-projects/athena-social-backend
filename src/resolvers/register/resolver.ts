@@ -10,19 +10,19 @@ import {
 } from '../../utils/errorMessages';
 
 const validateSchema = async (args: any): Promise<any> => {
-    try {
-        await schema.validate(args, {abortEarly: false});
-    } catch (err) {
-        return formatYupError(err);
-    }
+  try {
+    await schema.validate(args, {abortEarly: false});
+  } catch (err) {
+    return formatYupError(err);
+  }
 };
 const schema = yup.object().shape({
-    email: yup
+  email: yup
         .string()
         .min(3, emailNotLongEnough)
         .max(255)
         .email(invalidEmail),
-    password: yup
+  password: yup
         .string()
         .min(3, passwordNotLongEnough)
         .max(255),
@@ -33,34 +33,34 @@ export default async (
     args: any,
     context: any,
 ) => {
-    const err = await validateSchema(args);
-    if (err) {
-        return err;
-    }
-    const {email, password} = args;
-    const userAlreadyExists = await User.findOne({
-        where: {email},
-        select: ['id'], // Only grab/select the 'id' field. This is just a small optimization.
-    });
+  const err = await validateSchema(args);
+  if (err) {
+    return err;
+  }
+  const {email, password} = args;
+  const userAlreadyExists = await User.findOne({
+    where: {email},
+    select: ['id'], // Only grab/select the 'id' field. This is just a small optimization.
+  });
 
-    if (userAlreadyExists) {
-        return [
-            {
-                path: 'email',
-                message: duplicateEmail,
-            },
-        ];
-    }
+  if (userAlreadyExists) {
+    return [
+      {
+        path: 'email',
+        message: duplicateEmail,
+      },
+    ];
+  }
 
-    const user = User.create({
-        firstName: 'john',
-        lastName: 'doe',
-        email,
-        password,
-        permissions: generalPermissions,
-    });
+  const user = User.create({
+    firstName: 'john',
+    lastName: 'doe',
+    email,
+    password,
+    permissions: generalPermissions,
+  });
 
-    await user.save();
+  await user.save();
 
-    return null;
+  return null;
 };

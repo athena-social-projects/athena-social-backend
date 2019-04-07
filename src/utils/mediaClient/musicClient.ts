@@ -4,6 +4,7 @@ import config from '../../config/mediaApi';
 import { IMediaSummary, IMediaDetail } from '../../types/mediaTypes';
 import IAlbum from '../../types/album';
 import Client from './client';
+import logger from '../logger';
 import mediaType from '../../config/mediaSource';
 
 export default class MusicClient extends Client {
@@ -47,7 +48,7 @@ export default class MusicClient extends Client {
           json: true,
         }))
         .then((res) => this.truncateData(res.albums.items))
-        .catch((err) => { console.log(err); });
+        .catch((err) => { logger.error('Error getting music:', err); });
   }
 
   public populateMediaDetail(album: IAlbum): IMediaDetail {
