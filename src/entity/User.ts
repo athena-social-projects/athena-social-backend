@@ -1,6 +1,7 @@
-import {Entity, Column, BaseEntity, PrimaryGeneratedColumn, BeforeInsert} from 'typeorm';
+import {Entity, Column, BaseEntity, PrimaryGeneratedColumn, BeforeInsert, OneToMany} from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import {Gender, userType} from '../types/customTypes';
+import {MediaList} from './MediaList';
 
 @Entity('users')
 export class User extends BaseEntity {
@@ -35,6 +36,9 @@ export class User extends BaseEntity {
 
   @Column('varchar', {nullable: false, default: userType.USER})
   public type: userType;
+
+  @OneToMany((type) => MediaList, (list) => list.owner)
+  mediaLists: MediaList[];
 
   @BeforeInsert()
   public async hashPassword() {
