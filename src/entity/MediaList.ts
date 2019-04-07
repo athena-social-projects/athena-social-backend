@@ -15,7 +15,6 @@ export class MediaList extends BaseEntity {
   public title: string;
 
   @ManyToOne((type) => User, (user) => user.mediaLists, {
-    eager: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })

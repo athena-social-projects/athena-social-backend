@@ -13,7 +13,6 @@ export class MediaListMedia extends BaseEntity {
 
   @ManyToOne((type) => MediaList, (list) => list.mediaListItems, {
     primary: true,
-    eager: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
