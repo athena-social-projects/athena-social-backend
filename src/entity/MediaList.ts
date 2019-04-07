@@ -14,7 +14,11 @@ export class MediaList extends BaseEntity {
   @Column('varchar', {length: 50})
   public title: string;
 
-  @ManyToOne((type) => User, (user) => user.mediaLists)
+  @ManyToOne((type) => User, (user) => user.mediaLists, {
+    eager: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   public owner: User;
 
   @OneToMany((type) => MediaListMedia, (media) => media.list, {eager: true})
