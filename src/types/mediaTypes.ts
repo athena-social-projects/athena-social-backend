@@ -8,3 +8,8 @@ export interface IMediaSummary {
 export interface IMediaDetail extends IMediaSummary {
   imageUrl: string;
 }
+
+export enum mediaType {
+  MOVIE = 'MOVIE',
+  MUSIC = 'MUSIC',
+}
