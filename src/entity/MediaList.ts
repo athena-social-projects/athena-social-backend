@@ -14,12 +14,18 @@ export class MediaList extends BaseEntity {
   @Column('varchar', {length: 50})
   public title: string;
 
-  @ManyToOne((type) => User, (user) => user.mediaLists, {
+  @Column('boolean', {default: false})
+  public public: boolean;
+
+  @Column('date', {name: 'created_at', nullable: false, default: (new Date())})
+  public creationDate: Date;
+
+  @ManyToOne((type) => User, (user) => user.lists, {
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   public owner: User;
 
   @OneToMany((type) => MediaListMedia, (media) => media.list, {eager: true})
-  public mediaListItems: MediaListMedia[];
+  public items: MediaListMedia[];
 }

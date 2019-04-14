@@ -38,7 +38,7 @@ export class User extends BaseEntity {
   public type: userType;
 
   @OneToMany((type) => MediaList, (list) => list.owner)
-  mediaLists: MediaList[];
+  lists: MediaList[];
 
   @BeforeInsert()
   public async hashPassword() {

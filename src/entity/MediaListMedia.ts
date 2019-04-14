@@ -11,7 +11,7 @@ export class MediaListMedia extends BaseEntity {
 
   // TODO: Add additional columns here such as 'order'.
 
-  @ManyToOne((type) => MediaList, (list) => list.mediaListItems, {
+  @ManyToOne((type) => MediaList, (list) => list.items, {
     primary: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',

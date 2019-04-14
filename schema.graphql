@@ -7,25 +7,41 @@ type Error {
     message: String!
 }
 
+type MediaListMedia {
+    id: String!
+    title: String!
+    type: String!
+    releaseDate: String!
+    order: Int!
+}
+
+type MediaList {
+    id: ID!
+    title: String!
+    public: Boolean
+    items: [MediaListMedia]!
+}
+
 type User {
     id: ID!
     email: String!
     permissions: [String!]
+    lists: [MediaList]!
 }
 
 type MediaSummary {
-    id: String
-    name: String
-    type: String
-    releaseDate: String
+    id: String!
+    title: String!
+    type: String!
+    releaseDate: String!
 }
 
 type MediaDetail {
-    id: String
-    name: String
-    type: String
-    releaseDate: String
-    imageUrl: String
+    id: String!
+    title: String!
+    type: String!
+    releaseDate: String!
+    imageUrl: String!
 }
 
 type Mutation {
@@ -38,6 +54,5 @@ type Query {
     ping: String
     mediaSearch(search: String): [MediaSummary]
     mediaId(id: String, mediaType: String): MediaDetail
-
-    me: User @Authenticate @hasPermissions(permissions: ["read:permissions"])
+    me: User @hasPermissions(permissions: ["read:permissions"]) @Authenticate
 }

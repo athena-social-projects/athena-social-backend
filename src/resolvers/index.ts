@@ -4,6 +4,7 @@ import register from './register/resolver';
 import login from './login/resolver';
 import mediaSearch from './mediaSearch/resolver';
 import mediaId from './mediaId/resolver';
+import mediaList from './mediaList/resolver';
 import logout from './logout/resolver';
 
 export const resolvers = {
@@ -17,6 +18,9 @@ export const resolvers = {
     register,
     login,
     logout,
+  },
+  User: {
+    lists: mediaList,
   },
 };
 
