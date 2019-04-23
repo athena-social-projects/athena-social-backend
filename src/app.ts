@@ -3,6 +3,7 @@ import morgan = require('morgan');
 import {ApolloServer, gql, IResolvers} from 'apollo-server-express';
 import {createConnection} from 'typeorm';
 import {redis} from './redis';
+import cors from 'cors';
 import session from 'express-session';
 import ConnectRedis from 'connect-redis';
 import {schemaDirectives} from './directives';
@@ -10,6 +11,12 @@ import {schemaDirectives} from './directives';
 import MediaClientManager from './utils/mediaClient/mediaClientManager';
 
 const RedisStore = ConnectRedis(session);
+
+const corsOptions = {
+  origin: 'http://127.0.0.1:4000',
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
 export class App {
   private app = express();
@@ -63,6 +70,6 @@ export class App {
         mediaClientManager: new MediaClientManager(),
       } as any),
     });
-    this.server.applyMiddleware({app: this.app});
+    this.server.applyMiddleware({app: this.app, cors: corsOptions});
   }
 }
