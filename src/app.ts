@@ -11,6 +11,12 @@ import MediaClientManager from './utils/mediaClient/mediaClientManager';
 
 const RedisStore = ConnectRedis(session);
 
+const corsOptions = {
+  origin: 'http://localhost:4000',
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
 export class App {
   private app = express();
   private port = process.env.PORT || 3000;
@@ -63,6 +69,6 @@ export class App {
         mediaClientManager: new MediaClientManager(),
       } as any),
     });
-    this.server.applyMiddleware({app: this.app});
+    this.server.applyMiddleware({app: this.app, cors: corsOptions});
   }
 }
