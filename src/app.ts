@@ -2,18 +2,17 @@ import express = require('express');
 import morgan = require('morgan');
 import {ApolloServer, gql, IResolvers} from 'apollo-server-express';
 import {createConnection} from 'typeorm';
-import {redis} from './redis';
-import cors from 'cors';
+import redis from './redis';
 import session from 'express-session';
 import ConnectRedis from 'connect-redis';
 import {schemaDirectives} from './directives';
-
+import logger from './utils/logger';
 import MediaClientManager from './utils/mediaClient/mediaClientManager';
 
 const RedisStore = ConnectRedis(session);
 
 const corsOptions = {
-  origin: 'http://127.0.0.1:4000',
+  origin: 'http://localhost:4000',
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
@@ -33,7 +32,7 @@ export class App {
     // Create Postgres connection to our database
     await createConnection();
     this.app.listen(this.port);
-    console.log(`Server listening on: http://localhost:${this.port}${this.server.graphqlPath}`);
+    logger.info(`Server listening on: http://localhost:${this.port}${this.server.graphqlPath}`);
   }
 
   private initRoutes(): void {

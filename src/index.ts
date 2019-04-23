@@ -6,4 +6,5 @@ import {resolvers} from './resolvers';
 const typeDefs = importSchema(path.join(__dirname, '../schema.graphql'));
 
 const Server = new App(resolvers, typeDefs);
+
 Server.start();

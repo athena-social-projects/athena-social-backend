@@ -5,27 +5,27 @@ import {InvalidLogin} from '../../utils/errors';
 
 
 export default async (_: any, {email, password}: any, context: any) => {
-    const user = await User.findOne({where: {email}});
+  const user = await User.findOne({where: {email}});
 
-    if (!user) {
-        return InvalidLogin;
-    }
+  if (!user) {
+    return InvalidLogin;
+  }
 
-    const valid = await bcrypt.compare(password, user.password);
+  const valid = await bcrypt.compare(password, user.password);
 
-    if (!valid) {
-        return InvalidLogin;
-    }
+  if (!valid) {
+    return InvalidLogin;
+  }
 
-    // Reverse this boolean check once email confirmation is working
-    if (user.confirmed) {
-        return [
-            {
-                path: 'email',
-                message: confirmEmailError,
-            },
-        ];
-    }
+  // Reverse this boolean check once email confirmation is working
+  if (user.confirmed) {
+    return [
+      {
+        path: 'email',
+        message: confirmEmailError,
+      },
+    ];
+  }
 
   // login successful
   const session = context.req.session;

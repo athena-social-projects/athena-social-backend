@@ -1,0 +1,17 @@
+{
+  "extends": "./../tslint.json",
+  "rules": {
+    "no-unused-expression": false
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ],
+  "exclude": [
+    "./src/schema.graphql"
+  ],
+  "jsRules": {
+      "max-line-length": {
+          "options": [120]
+      }
+  }
+}
