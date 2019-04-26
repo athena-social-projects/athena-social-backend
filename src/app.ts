@@ -2,7 +2,7 @@ import express = require('express');
 import morgan = require('morgan');
 import {ApolloServer, gql, IResolvers} from 'apollo-server-express';
 import {createConnection} from 'typeorm';
-import redis from './redis';
+import redis from './utils/redis';
 import session from 'express-session';
 import ConnectRedis from 'connect-redis';
 import {schemaDirectives} from './directives';

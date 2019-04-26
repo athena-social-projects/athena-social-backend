@@ -6,10 +6,10 @@ import IAlbum from '../../types/album';
 import Client from './client';
 import logger from '../logger';
 import mediaType from '../../config/mediaSource';
+import redis from '../redis';
 
 export default class MusicClient extends Client {
   private apiKey: string;
-  // private accessToken: string;
 
   constructor(uri: string, searchPath: string, apiKey: string) {
     super(uri, searchPath);
@@ -34,7 +34,7 @@ export default class MusicClient extends Client {
   }
 
   public searchByString(search: string): Promise<void | IMediaSummary[]> {
-    return this.authenticate()
+    return this.getToken()
       .then((accessToken) =>
         request.get({
           url: `${this.uri}${this.searchPath}`,
@@ -85,8 +85,23 @@ export default class MusicClient extends Client {
       body: 'grant_type=client_credentials',
       json: true,
     })
+      .then((authentication) => authentication);
+  }
+
+  private getToken() {
+    return redis.get('spotifyToken')
       .then((res) => {
-        return `${res.token_type} ${res.access_token}`;
+        if (res === null) {
+          return this.authenticate()
+            .then((token) =>
+              redis.setex('spotifyToken', token.expires_in, `${token.token_type} ${token.access_token}`)
+                .then(() => `${token.token_type} ${token.access_token}`));
+        } else {
+          return res;
+        }
+      })
+      .catch((err) => {
+        logger.error('Could Auth spotify api', err);
       });
   }
 }
