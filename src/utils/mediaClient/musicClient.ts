@@ -10,6 +10,7 @@ import redis from '../redis';
 
 export default class MusicClient extends Client {
   private apiKey: string;
+  private tokenKey = 'spotifyToken';
 
   constructor(uri: string, searchPath: string, apiKey: string) {
     super(uri, searchPath);
@@ -17,7 +18,7 @@ export default class MusicClient extends Client {
   }
 
   public getById(id: string): any {
-    return this.authenticate()
+    return this.getToken()
       .then((accessToken) =>
         request.get({
           url: `${this.uri}${config.musicConfig.idSearchPath}/${id}`,
@@ -89,19 +90,19 @@ export default class MusicClient extends Client {
   }
 
   private getToken() {
-    return redis.get('spotifyToken')
+    return redis.get(this.tokenKey)
       .then((res) => {
         if (res === null) {
           return this.authenticate()
             .then((token) =>
-              redis.setex('spotifyToken', token.expires_in, `${token.token_type} ${token.access_token}`)
+              redis.setex(this.tokenKey, token.expires_in, `${token.token_type} ${token.access_token}`)
                 .then(() => `${token.token_type} ${token.access_token}`));
         } else {
           return res;
         }
       })
       .catch((err) => {
-        logger.error('Could Auth spotify api', err);
+        logger.error('Could not Auth spotify api', err);
       });
   }
 }
