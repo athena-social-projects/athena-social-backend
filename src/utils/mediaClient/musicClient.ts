@@ -94,9 +94,12 @@ export default class MusicClient extends Client {
       .then((res) => {
         if (res === null) {
           return this.authenticate()
-            .then((token) =>
-              redis.setex(this.tokenKey, token.expires_in, `${token.token_type} ${token.access_token}`)
-                .then(() => `${token.token_type} ${token.access_token}`));
+            .then((authResponse) => {
+              const timeLimit = authResponse.expires_in - 30;
+              const token = `${authResponse.token_type} ${authResponse.access_token}`;
+              return redis.setex(this.tokenKey, timeLimit, token)
+                .then(() => token);
+            });
         } else {
           return res;
         }
