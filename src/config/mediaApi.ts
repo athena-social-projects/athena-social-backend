@@ -14,4 +14,8 @@ export default {
     authUrl: 'https://accounts.spotify.com',
     authPath: '/api/token',
   },
+  redisConfig: {
+    port: 6379,
+    rootUrl: '127.0.0.1',
+  },
 };
