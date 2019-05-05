@@ -19,7 +19,7 @@ export default function sortSearch(media: IMediaSummary[], search: string): IMed
   media.forEach((entity) => {
     const sortedEntity: ISortingMedia = {
       media: entity,
-      similarity: leven(search, entity.name),
+      similarity: leven(search, entity.title),
     };
     simalarMedia.push(sortedEntity);
   });

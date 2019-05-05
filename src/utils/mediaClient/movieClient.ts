@@ -47,7 +47,7 @@ export default class MovieClient extends Client {
     shortData.forEach((movie: IMovie) => {
       newData.push({
         id: movie.id.toString(),
-        name: movie.title,
+        title: movie.title,
         type: this.type,
         releaseDate: movie.release_date,
       });
@@ -58,7 +58,7 @@ export default class MovieClient extends Client {
   private populateMediaDetail(movie: IMovie): IMediaDetail {
     return {
       id: movie.id.toString(),
-      name: movie.title,
+      title: movie.title,
       type: this.type,
       releaseDate: movie.release_date,
       imageUrl: movie.poster_path ? config.movieConfig.baseImageUrl + movie.poster_path : null,

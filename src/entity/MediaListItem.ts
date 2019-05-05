@@ -1,15 +1,18 @@
 import {
+  Column,
   Entity,
   BaseEntity,
-  ManyToOne,
+  ManyToOne, BeforeInsert,
 } from 'typeorm';
 import {Media} from './Media';
 import {MediaList} from './MediaList';
 
 @Entity()
-export class MediaListMedia extends BaseEntity {
+export class MediaListItem extends BaseEntity {
 
-  // TODO: Add additional columns here such as 'order'.
+  // TODO: make this non-nullable and figure out how to set it.
+  @Column('integer', {nullable: true})
+  public order: number;
 
   @ManyToOne((type) => MediaList, (list) => list.items, {
     primary: true,

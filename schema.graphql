@@ -2,38 +2,20 @@ directive @Authenticate on QUERY | FIELD_DEFINITION
 
 directive @hasPermissions(permissions: [String]) on QUERY | FIELD_DEFINITION | FIELD
 
+directive @transformLists on FIELD_DEFINITION
+
 type Error {
     path: String!
     message: String!
 }
 
-type MediaListMedia {
-    id: String!
-    title: String!
-    type: String!
-    releaseDate: String!
-    order: Int!
-}
-
-type MediaList {
-    id: ID!
-    title: String!
-    public: Boolean
-    items: [MediaListMedia]!
-}
-
-type User {
-    id: ID!
-    email: String!
-    permissions: [String!]
-    lists: [MediaList]!
-}
 
 type MediaSummary {
     id: String!
     title: String!
     type: String!
     releaseDate: String!
+    order: Int
 }
 
 type MediaDetail {
@@ -42,6 +24,20 @@ type MediaDetail {
     type: String!
     releaseDate: String!
     imageUrl: String!
+}
+
+type MediaList {
+    id: ID!
+    title: String!
+    public: Boolean
+    items: [MediaSummary]!
+}
+
+type User {
+    id: ID!
+    email: String!
+    permissions: [String!]
+    lists: [MediaList]! @transformLists
 }
 
 type Mutation {

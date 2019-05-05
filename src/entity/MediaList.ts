@@ -5,7 +5,7 @@ import {
   ManyToOne, OneToMany, PrimaryGeneratedColumn,
 } from 'typeorm';
 import {User} from './User';
-import {MediaListMedia} from './MediaListMedia';
+import {MediaListItem} from './MediaListItem';
 
 @Entity()
 export class MediaList extends BaseEntity {
@@ -26,6 +26,6 @@ export class MediaList extends BaseEntity {
   })
   public owner: User;
 
-  @OneToMany((type) => MediaListMedia, (media) => media.list, {eager: true})
-  public items: MediaListMedia[];
+  @OneToMany((type) => MediaListItem, (media) => media.list, {eager: true})
+  public items: MediaListItem[];
 }
