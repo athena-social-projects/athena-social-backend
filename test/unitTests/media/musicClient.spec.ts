@@ -27,7 +27,7 @@ describe('MovieClient Tests', () => {
       .then((result: IMediaSummary[]) => {
         result.forEach(media => {
           expect(media.id).to.be.exist;
-          expect(media.name).to.be.exist;
+          expect(media.title).to.be.exist;
           expect(media.type).to.be.exist;
           movieDb.done();
         });
