@@ -1,6 +1,6 @@
 import {Entity, Column, BaseEntity, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
 import {mediaType} from '../types/mediaTypes';
-import {MediaListMedia} from './MediaListMedia';
+import {MediaListItem} from './MediaListItem';
 
 @Entity('media')
 export class Media extends BaseEntity {
@@ -12,6 +12,6 @@ export class Media extends BaseEntity {
   @Column('varchar', {nullable: false, default: mediaType.MOVIE})
   public type: mediaType;
 
-  @OneToMany((type) => MediaListMedia, (mediaListMedia) => mediaListMedia.media)
-  public belongsTo: MediaListMedia[];
+  @OneToMany((type) => MediaListItem, (mediaListMedia) => mediaListMedia.media)
+  public belongsTo: MediaListItem[];
 }

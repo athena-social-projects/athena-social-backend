@@ -55,7 +55,7 @@ export default class MusicClient extends Client {
   public populateMediaDetail(album: IAlbum): IMediaDetail {
     return {
       id: album.id,
-      name: album.name,
+      title: album.name,
       type: mediaType.Album,
       releaseDate: album.release_date,
       imageUrl: album.images[0] ? album.images[0].url : null,
@@ -68,7 +68,7 @@ export default class MusicClient extends Client {
     shortData.forEach((album: IAlbum) => {
       newData.push({
         id: album.id,
-        name: album.name,
+        title: album.name,
         type: mediaType.Album,
         releaseDate: album.release_date,
       });

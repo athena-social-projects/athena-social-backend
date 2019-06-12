@@ -2,30 +2,42 @@ directive @Authenticate on QUERY | FIELD_DEFINITION
 
 directive @hasPermissions(permissions: [String]) on QUERY | FIELD_DEFINITION | FIELD
 
+directive @transformLists on FIELD_DEFINITION
+
 type Error {
     path: String!
     message: String!
+}
+
+
+type MediaSummary {
+    id: String!
+    title: String!
+    type: String!
+    releaseDate: String!
+    order: Int
+}
+
+type MediaDetail {
+    id: String!
+    title: String!
+    type: String!
+    releaseDate: String!
+    imageUrl: String!
+}
+
+type MediaList {
+    id: ID!
+    title: String!
+    public: Boolean
+    items: [MediaSummary]!
 }
 
 type User {
     id: ID!
     email: String!
     permissions: [String!]
-}
-
-type MediaSummary {
-    id: String
-    name: String
-    type: String
-    releaseDate: String
-}
-
-type MediaDetail {
-    id: String
-    name: String
-    type: String
-    releaseDate: String
-    imageUrl: String
+    lists: [MediaList]! @transformLists
 }
 
 type Mutation {
@@ -38,6 +50,5 @@ type Query {
     ping: String
     mediaSearch(search: String): [MediaSummary]
     mediaId(id: String, mediaType: String): MediaDetail
-
-    me: User @Authenticate @hasPermissions(permissions: ["read:permissions"])
+    me: User @hasPermissions(permissions: ["read:permissions"]) @Authenticate
 }
