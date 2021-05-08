@@ -76,7 +76,7 @@
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "tslint": "^5.13.1",
-    "typeorm": "^0.2.14",
+    "typeorm": "^0.2.25",
     "typescript": "^3.3.3333",
     "uuid": "^3.3.2",
     "winston": "^3.2.1",
